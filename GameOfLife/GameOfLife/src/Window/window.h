@@ -22,19 +22,29 @@ class Window
 	friend void UserInput::registerDisplayInput(const Window& window);
 public:
 	Window(int width, int height, std::string title);
+	~Window();
 
-	void drawBoard(const Board& board) const;
-	void moveBoard(int dx, int dy);
+	void drawBoard(float deltaTime, const Board& board) const;
+	void moveBoard(float dx, float dy);
+	
 	void zoomInOut(float zoomChange);
+	void setZoom(float zoom);
+
+	void getBoardCellIndicesByMousePosition(int& x, int& y, int mouseX, int mouseY, const Board& board);
 private:
 	void initAllegro();
 	void createAllegroDisplay();
+	void initImGui();
 
 	int width, height;
 	std::string title;
 	ALLEGRO_DISPLAY* display{};
 
-	float zoom{ 1.0f }; //one cell -> one pixel?
-	int translationX{}, translationY{};
+	mutable float zoom{ 1.0f };
+
+	float translationX{}, translationY{};
+	float translationSpeed{ 100.0f };
+
+	int cellSize{ 10 };
 };
 

@@ -1,27 +1,27 @@
 #pragma once
 #include "allegro5/allegro5.h"
+#include "../Board/board.h"
 
 class Window;
 
 class UserInput
 {
 public:
-	UserInput();
+	explicit UserInput(Window& window, Board& board);
 	~UserInput();
 
 	void registerDisplayInput(const Window& window);
 
-	void processInput();
-
-	static void getMousePosition(int& x, int& y);
-	static bool isLeftMouseButtonClicked();
-	static bool isRightMouseButtonClicked();
+	void processInput(float deltaTime);
+	
+	bool isWindowCloseClicked();
 private:
 	void init();
+	void processImGui();
+
+	Window& window;
+	Board& board;
 
 	ALLEGRO_EVENT_QUEUE* eventQueue{};
-
-	static int mousePosX, mousePosY;
-	static bool leftMouseButton, rightMouseButton;
+	bool shouldWindowClose;
 };
-
