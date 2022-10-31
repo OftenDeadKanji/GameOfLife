@@ -88,12 +88,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="imgui\imgui.cpp" />
-    <ClCompile Include="imgui\imgui_demo.cpp" />
-    <ClCompile Include="imgui\imgui_draw.cpp" />
-    <ClCompile Include="imgui\imgui_impl_allegro5.cpp" />
-    <ClCompile Include="imgui\imgui_tables.cpp" />
-    <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Board\board.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Window\window.cpp" />
@@ -104,29 +98,22 @@
     <None Include="src\Kernels\GoL_OneIterate.cl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="imgui\imconfig.h" />
-    <ClInclude Include="imgui\imgui.h" />
-    <ClInclude Include="imgui\imgui_impl_allegro5.h" />
-    <ClInclude Include="imgui\imgui_internal.h" />
-    <ClInclude Include="imgui\imstb_rectpack.h" />
-    <ClInclude Include="imgui\imstb_textedit.h" />
-    <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="src\Board\board.h" />
     <ClInclude Include="src\Window\window.h" />
     <ClInclude Include="src\UserInput\userInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\AllegroDeps.1.12.1\build\native\AllegroDeps.targets" Condition="Exists('..\packages\AllegroDeps.1.12.1\build\native\AllegroDeps.targets')" />
-    <Import Project="..\packages\Allegro.5.2.7.1\build\native\Allegro.targets" Condition="Exists('..\packages\Allegro.5.2.7.1\build\native\Allegro.targets')" />
     <Import Project="..\packages\opencl-nug.0.777.77\build\native\opencl-nug.targets" Condition="Exists('..\packages\opencl-nug.0.777.77\build\native\opencl-nug.targets')" />
+    <Import Project="..\packages\AllegroDeps.1.13.0\build\native\AllegroDeps.targets" Condition="Exists('..\packages\AllegroDeps.1.13.0\build\native\AllegroDeps.targets')" />
+    <Import Project="..\packages\Allegro.5.2.8\build\native\Allegro.targets" Condition="Exists('..\packages\Allegro.5.2.8\build\native\Allegro.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Ten projekt zawiera odwołania do pakietów NuGet, których nie ma na tym komputerze. Użyj przywracania pakietów NuGet, aby je pobrać. Aby uzyskać więcej informacji, zobacz http://go.microsoft.com/fwlink/?LinkID=322105. Brakujący plik: {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\AllegroDeps.1.12.1\build\native\AllegroDeps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AllegroDeps.1.12.1\build\native\AllegroDeps.targets'))" />
-    <Error Condition="!Exists('..\packages\Allegro.5.2.7.1\build\native\Allegro.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Allegro.5.2.7.1\build\native\Allegro.targets'))" />
     <Error Condition="!Exists('..\packages\opencl-nug.0.777.77\build\native\opencl-nug.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\opencl-nug.0.777.77\build\native\opencl-nug.targets'))" />
+    <Error Condition="!Exists('..\packages\AllegroDeps.1.13.0\build\native\AllegroDeps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AllegroDeps.1.13.0\build\native\AllegroDeps.targets'))" />
+    <Error Condition="!Exists('..\packages\Allegro.5.2.8\build\native\Allegro.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Allegro.5.2.8\build\native\Allegro.targets'))" />
   </Target>
 </Project>

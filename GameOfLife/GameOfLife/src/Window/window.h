@@ -6,12 +6,12 @@
 #include "../UserInput/userInput.h"
 
 class AllegroInitFailException
-: public std::exception
+	: public std::exception
 {
 public:
 	explicit AllegroInitFailException(std::string message);
 
-	[[nodiscard]] const char* what() const override;
+	const char* what() const override;
 
 private:
 	std::string message;
@@ -26,7 +26,7 @@ public:
 
 	void drawBoard(float deltaTime, const Board& board) const;
 	void moveBoard(float dx, float dy);
-	
+
 	void zoomInOut(float zoomChange);
 	void setZoom(float zoom);
 
@@ -34,7 +34,6 @@ public:
 private:
 	void initAllegro();
 	void createAllegroDisplay();
-	void initImGui();
 
 	int width, height;
 	std::string title;

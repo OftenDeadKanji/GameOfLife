@@ -51,7 +51,7 @@ private:
 	int dstBoard{ 1 };
 
 	double updateSpeed{ 1.0 };
-	const double defaultBreakTimeInSec{ 0.5};
+	const double defaultBreakTimeInSec{ 0.05};
 	std::chrono::steady_clock::time_point lastUpdate;
 	bool continueUpdating{};
 

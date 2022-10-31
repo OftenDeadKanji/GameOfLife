@@ -17,7 +17,6 @@ public:
 	bool isWindowCloseClicked();
 private:
 	void init();
-	void processImGui();
 
 	Window& window;
 	Board& board;

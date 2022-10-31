@@ -1,7 +1,6 @@
 #include "window.h"
 
 #include "allegro5/allegro_primitives.h"
-#include "../../imgui/imgui_impl_allegro5.h"
 
 AllegroInitFailException::AllegroInitFailException(std::string message)
 	: message(std::move(message))
@@ -17,13 +16,10 @@ Window::Window(int width, int height, std::string title)
 {
 	this->initAllegro();
 	this->createAllegroDisplay();
-	//this->initImGui();
 }
 
 Window::~Window()
 {
-	//ImGui_ImplAllegro5_Shutdown();
-
 	al_destroy_display(this->display);
 }
 
@@ -62,7 +58,6 @@ void Window::drawBoard(float deltaTime, const Board& board) const
 		}
 	}
 
-	//ImGui_ImplAllegro5_RenderDrawData(ImGui::GetDrawData());
 	al_flip_display();
 }
 
@@ -127,12 +122,3 @@ void Window::createAllegroDisplay()
 	this->display = al_create_display(this->width, this->height);
 }
 
-void Window::initImGui()
-{
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsDark();
-
-	ImGui_ImplAllegro5_Init(this->display);
-}

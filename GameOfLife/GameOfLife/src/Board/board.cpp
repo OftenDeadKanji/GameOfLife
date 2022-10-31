@@ -23,7 +23,7 @@ std::string load_File(const std::string& filePath)
 		std::string buffer(size, ' ');
 
 		file.seekg(0);
-		file.read(&buffer[0], size);
+		file.read(buffer.data(), size);
 
 		file.close();
 		return buffer;
@@ -55,14 +55,9 @@ void Board::update(float deltaTime)
 		if (elapsedTimeInSec * this->updateSpeed > this->defaultBreakTimeInSec)
 		{
 			this->queue.enqueueWriteBuffer(this->bufferSource, CL_TRUE, 0, sizeof(int) * this->size, this->board[this->srcBoard]);
-			//std::cout << &this->board[this->srcBoard][0];
-			//std::cout << &this->board[this->dstBoard][0];
 
 			kernel.setArg(0, this->bufferSource);
 			kernel.setArg(1, this->bufferDestination);
-			//kernel.setArg(2, 1);
-			//kernel.setArg(3, 1);
-			//kernel.setArg(4, 1);
 			kernel.setArg(2, this->width);
 			kernel.setArg(3, this->height);
 			kernel.setArg(4, this->withBorder);
